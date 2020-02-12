@@ -8,37 +8,29 @@ let skiData = {
   goal: 100
 }
 
-class SkiDayCounter extends Component {
+/* You can also create a component as a function.
+So using the JS syntax we can create a JS function 
+that returns JSX elements to be rendered */
 
-  // create custom methods
-  getPercent = decimal => {
-    return decimal * 100 + '%'
-  }
-  calcGoalProgress = (total, goal) => {
-    return this.getPercent(total/goal)
-  }
-
-  render () {
-    // destructuring this.props
-    const {total, powder, backcountry, goal} = this.props
-    return (
-      <section>
-        <h1>Ski days</h1>
-        <div>
-          <p>Total days: {total}</p>
-        </div>
-        <div>
-          <p>Powder days: {powder}</p>
-        </div>
-        <div>
-          <p>Backcountry days: {backcountry}</p>
-        </div>
-        <div>
-          <p>Goal progress: {this.calcGoalProgress(total, goal)}</p>
-        </div>
-      </section>
-    )
-  }
+// create an arrow function that returns some JSX elements
+const SkiDayCounter = (props) => {
+  return (
+    <section>
+      <h1>Ski days</h1>
+      <div>
+        <p>Total days: {props.total}</p>
+      </div>
+      <div>
+        <p>Powder days: {props.powder}</p>
+      </div>
+      <div>
+        <p>Backcountry days: {props.backcountry}</p>
+      </div>
+      <div>
+        <p>Goal progress: {props.goal}</p>
+      </div>
+  </section>
+  )
 }
 
 render(
