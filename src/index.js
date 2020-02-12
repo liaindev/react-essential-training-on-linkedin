@@ -30,11 +30,24 @@ class Library extends Component {
     this.state = {
       open: true
     }
+    this.toggleOpenClosed = this.toggleOpenClosed.bind(this)
+  }
+
+  toggleOpenClosed() {
+    // use setState function to reset the state element value
+    /* this.setState ({
+      open: !this.state.open
+    }) */
+
+    // setState is asynchronous. Instead of object we are going to use a callback function
+    // prevState returns the object, so the object should be wrapped in another set of enclosing parentheses ()
+    this.setState(prevState => ({
+      open: !prevState.open
+    }))
   }
 
   render () {
     // state is just an object and it has as many keys as you set up 
-    // and then you can use these values within the context of your component
     console.log(this.state)
 
     // without destructuring
@@ -45,6 +58,7 @@ class Library extends Component {
     return (
       <div>
         <h1>The library is {this.state.open ? 'open' : 'closed'}</h1>
+        <button onClick={this.toggleOpenClosed}>Change</button>
         {books.map (
           (book, i) => <Book 
                     key={i}
@@ -61,5 +75,3 @@ render(
   <Library books={bookList}/>,
   document.getElementById('root')
 )
-
-
