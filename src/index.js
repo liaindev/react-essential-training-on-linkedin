@@ -3,21 +3,19 @@ import React from 'react';
 // import ReactDOM to render our React component to the DOM
 import ReactDOM from 'react-dom';
 
-// styles for our title
-var myStyle = {
-  backgroundColor: 'black',
-  color: 'white',
-  fontFamily: 'Arial'
+class Message extends React.Component {
+  // use render() method to render elements to the DOM
+  render() {
+    return (
+      <div>
+        <h1>Hello Everyone</h1>
+      </div>
+    )
+  }
 }
 
-// Use ReactDOM.render() to render this title to the DOM
-ReactDOM.render(
-  // use JSX tag-based syntax with curly braces {}
-  <div style={myStyle}>
-    <h1 id="heading-element">Hello, world!</h1>
-    <p>We're glad you're here</p>
-  </div>,
-  document.getElementById('root')
+// Use ReactDOM.render() to render our Message component to the DOM
+ReactDOM.render(<Message />, document.getElementById('root')
 )
 
 
