@@ -6,11 +6,12 @@ import ReactDOM from 'react-dom';
 class Message extends React.Component {
   // use render() method to render elements to the DOM
   render() {
-    // to see the props object with a message (msg) as a key
-    console.log(this.props)
     return (
       <div>
-        <h1>{this.props.msg}</h1>
+        <h1 style={{color: this.props.myColor}}>
+          {this.props.msg}
+        </h1>
+        <p>I'll check back in {this.props.minutes} minutes</p>
       </div>
     )
   }
@@ -18,8 +19,8 @@ class Message extends React.Component {
 
 // Use ReactDOM.render() to render our Message component to the DOM
 ReactDOM.render(
-  // age & msg are properties for the Message component
-  <Message age={50} msg="How are you?"/>, 
+  // color & msg are properties for the Message component
+  <Message myColor="blue" msg="How are you?" minutes={5}/>, 
   document.getElementById('root')
 )
 
