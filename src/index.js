@@ -1,26 +1,41 @@
-// import the React library in order to use it
 import React from 'react';
-// import ReactDOM to render our React component to the DOM
 import ReactDOM from 'react-dom';
 
-class Message extends React.Component {
-  // use render() method to render elements to the DOM
-  render() {
+let skiData = {
+  total: 50,
+  powder: 20,
+  backcountry: 10,
+  goal: 100
+}
+
+class SkiDayCounter extends React.Component {
+  render () {
     return (
-      <div>
-        <h1 style={{color: this.props.myColor}}>
-          {this.props.msg}
-        </h1>
-        <p>I'll check back in {this.props.minutes} minutes</p>
-      </div>
+      <section>
+        <h1>Ski days</h1>
+        <div>
+          <p>Total days: {this.props.total}</p>
+        </div>
+        <div>
+          <p>Powder days: {this.props.powder}</p>
+        </div>
+        <div>
+          <p>bBckcountry days: {this.props.backcountry}</p>
+        </div>
+        <div>
+          <p>Goal days: {this.props.goal}</p>
+        </div>
+      </section>
     )
   }
 }
 
-// Use ReactDOM.render() to render our Message component to the DOM
 ReactDOM.render(
-  // color & msg are properties for the Message component
-  <Message myColor="blue" msg="How are you?" minutes={5}/>, 
+  <SkiDayCounter 
+    total={skiData.total}
+    powder={skiData.powder}
+    backcountry={skiData.backcountry}
+    goal={skiData.goal}/>,
   document.getElementById('root')
 )
 
