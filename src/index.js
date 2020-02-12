@@ -20,22 +20,41 @@ const Book = ({title, author, pages}) => {
   )
 }
 
-// <Library /> is a parent component and it rendering each of the Book components using bookList array
-// rendering an array of books with map() method
-const Library = ({books}) => {
-  return (
-    <div>
-      {books.map (
-        (book, i) => <Book 
-                  // each of these data are being driven from props which come the bookList itself
-                  // added a unique key {i} for array elements
-                  key={i}
-                  title={book.title} 
-                  author={book.author} 
-                  pages={book.pages}/>
-      )}
-    </div>
-  )
+// Components can have a local State, but in order to use this, we need to use in the ES6 class component
+class Library extends Component {
+  // the way to add local state to <Library /> component is to use the constructor method
+  constructor (props) {
+    // super method is going to create a new instance of this class
+    super (props)
+    // add a state value
+    this.state = {
+      open: true
+    }
+  }
+
+  render () {
+    // state is just an object and it has as many keys as you set up 
+    // and then you can use these values within the context of your component
+    console.log(this.state)
+
+    // without destructuring
+    // const books = this.props.books
+
+    // using ES6 destructuring
+    const { books } = this.props
+    return (
+      <div>
+        <h1>The library is {this.state.open ? 'open' : 'closed'}</h1>
+        {books.map (
+          (book, i) => <Book 
+                    key={i}
+                    title={book.title} 
+                    author={book.author} 
+                    pages={book.pages}/>
+        )}
+      </div>
+    )
+  }
 }
 
 render(
