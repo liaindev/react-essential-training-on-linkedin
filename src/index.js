@@ -19,7 +19,7 @@ class Message extends React.Component {
 
 // Use ReactDOM.render() to render our Message component to the DOM
 ReactDOM.render(
-  // color & msg are properties for the Message component
+  // color & msg & minutes are properties for the Message component
   <Message myColor="blue" msg="How are you?" minutes={5}/>, 
   document.getElementById('root')
 )
