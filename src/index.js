@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
+import React, { Component } from 'react'
+import { render } from 'react-dom'
+import PropTypes from 'prop-types'
 
-
+// change array of objects to an object of objects
 let bookList = [
-  /* for default props
-  {"title": "Hunger"}, */
-
   {"title": "Hunger", "author": "Roxane Gay", "pages": 320},
   {"title": "The Sun Also Rises", "author": "Ernest Hemingway", "pages": 260},
   {"title": "White Teeth", "author": "Zadie Smith", "pages": 480},
@@ -103,10 +101,21 @@ class Library extends Component {
 	}
 }
 
-render(
-  /* show default props
-  <Library />, */
 
+// these propsTypes are going to make sure that the right types are provided to all of these components
+Library.propTypes = {
+  books: PropTypes.array
+}
+
+Book.propTypes = {
+  title: PropTypes.string,
+  author: PropTypes.string,
+  pages: PropTypes.number,
+  freeBookmark: PropTypes.bool
+}
+
+
+render(
   <Library books={bookList} />,
   document.getElementById('root')
 )
