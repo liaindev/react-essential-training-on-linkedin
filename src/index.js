@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
+/*
 let bookList = [
   {"title": "Hunger", "author": "Roxane Gay", "pages": 320},
   {"title": "The Sun Also Rises", "author": "Ernest Hemingway", "pages": 260},
@@ -19,7 +20,6 @@ const Book = ({title, author, pages, freeBookmark}) => {
   )
 }
 
-// minimalized arrow functions Hiring() and NotHiring()
 const Hiring = () =>
   <div>
     <p>The Library is hiring. Go to www.library.com/jobs for more</p>
@@ -41,7 +41,6 @@ class Library extends Component {
 
   componentDidMount() {
     this.setState({loading: true})
-    // fetch some data from a REST API
     fetch('https://hplussport.com/api/products/order/price/sort/asc/qty/1')
       .then(data => data.json())
       .then(data => this.setState({data, loading: false}))
@@ -92,7 +91,37 @@ class Library extends Component {
 	}
 }
 
+*/
+
+
+class FavouriteColorForm extends React.Component {
+  // use state to help us parse some of these values that are coming from the DOM
+  state = { value: ''}
+
+  newColor = e => 
+    this.setState({ value: e.target.value })
+
+  submit = e => {
+    console.log(`New Color: ${this.state.value}`)
+    e.preventDefault()
+  }
+
+  render() {
+    return(
+      <form onSubmit={this.submit}>
+        <label>Favourite Color:
+          <input 
+             type="color"
+             onChange={this.newColor}/>
+        </label>
+        <button>Submit</button>
+      </form>
+    )
+  }
+}
+
+
 render(
-  <Library books={bookList}/>,
+  <FavouriteColorForm />,
   document.getElementById('root')
 )
