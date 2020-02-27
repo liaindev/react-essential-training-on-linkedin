@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-/*
+
 let bookList = [
+  /* for default props
+  {"title": "Hunger"}, */
+
   {"title": "Hunger", "author": "Roxane Gay", "pages": 320},
   {"title": "The Sun Also Rises", "author": "Ernest Hemingway", "pages": 260},
   {"title": "White Teeth", "author": "Zadie Smith", "pages": 480},
   {"title": "Cat's Cradle", "author": "Kurt Vonnegut", "pages": 304}
 ]
 
-const Book = ({title, author, pages, freeBookmark}) => {
+const Book = ({title="No Title Provided", author="No Author", pages=0, freeBookmark}) => {
   return (
     <section>
       <h2>{title}</h2>
@@ -31,6 +34,15 @@ const NotHiring = () =>
 </div>
 
 class Library extends Component {
+
+  // add default props
+  static defaultProps = {
+    books: [
+      {"title": "Tahoe Tales", "author": "Chet Whitley", "pages": 1000}
+    ]
+  }
+
+
   state = { 
     open: true, 
     freeBookmark: false,
@@ -91,37 +103,10 @@ class Library extends Component {
 	}
 }
 
-*/
-
-
-class FavouriteColorForm extends React.Component {
-  // use state to help us parse some of these values that are coming from the DOM
-  state = { value: ''}
-
-  newColor = e => 
-    this.setState({ value: e.target.value })
-
-  submit = e => {
-    console.log(`New Color: ${this.state.value}`)
-    e.preventDefault()
-  }
-
-  render() {
-    return(
-      <form onSubmit={this.submit}>
-        <label>Favourite Color:
-          <input 
-             type="color"
-             onChange={this.newColor}/>
-        </label>
-        <button>Submit</button>
-      </form>
-    )
-  }
-}
-
-
 render(
-  <FavouriteColorForm />,
+  /* show default props
+  <Library />, */
+
+  <Library books={bookList} />,
   document.getElementById('root')
 )
